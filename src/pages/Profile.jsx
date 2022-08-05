@@ -2,7 +2,7 @@ import { getAuth, updateEmail, updateProfile } from 'firebase/auth'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { updateDoc, doc } from 'firebase/firestore'
-import { db } from '../firebase.config'
+import db from '../firebase.config'
 import { toast } from 'react-toastify'
 function Profile() {
   const auth = getAuth()

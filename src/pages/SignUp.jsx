@@ -8,7 +8,7 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore'
-import { db } from '../firebase.config'
+import db from '../firebase.config'
 import { toast } from 'react-toastify'
 
 function SignUp() {
@@ -42,8 +42,10 @@ function SignUp() {
       const formDataCopy = { ...formData }
       delete formDataCopy.password
       formDataCopy.timestamp = serverTimestamp()
+      const dbRef = doc(db, 'users', user.uid)
 
-      await setDoc(doc(db, 'users', user.uid), formDataCopy)
+      await setDoc(dbRef, formDataCopy)
+      toast.success('User Added in Firstore')
       navigate('/')
     } catch (error) {
       console.log(error)
