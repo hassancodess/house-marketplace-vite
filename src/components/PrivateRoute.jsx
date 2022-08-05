@@ -1,7 +1,8 @@
-import React from 'react'
+import { Outlet, Navigate } from 'react-router-dom'
 
-function PrivateRoute() {
-  return <div>PrivateRoute</div>
+function PrivateRoute({ children }) {
+  const auth = false
+  return <div>{auth ? <Outlet /> : <Navigate to='/' />}</div>
 }
 
 export default PrivateRoute
